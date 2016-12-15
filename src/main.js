@@ -1,4 +1,4 @@
-// import * as singleSpa from 'single-spa'
+import * as singleSpa from 'single-spa'
 // const testAppUrl = window.ssConfig.testApp2 || 'oh noes'
 
 // singleSpa.declareChildApplication('admin-portal', () => System.import(testAppUrl), () => true)
@@ -19,6 +19,6 @@ cpMainContent.setAttribute('id', 'cp-main-content')
 document.body.appendChild(cpMainContent);
 window.loggedInUser ={effective_permissions: {}}
 window.tenant = {}
-System.import('single-spa').then(singleSpa => {
-  singleSpa.declareChildApplication('canopy-urls', () => SystemJS.import('https://cdn.canopytax.com/sofe/canopy-urls/v5.3.2-24-g5a6d189/canopy-urls.js'), () => true);
-});
+
+singleSpa.declareChildApplication('canopy-urls', () => SystemJS.import('https://cdn.canopytax.com/sofe/canopy-urls/v5.3.2-24-g5a6d189/canopy-urls.js'), () => true);
+singleSpa.start();
