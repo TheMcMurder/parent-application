@@ -1,7 +1,6 @@
 SystemJS.config({
   paths: {
     "npm:": "jspm_packages/npm/",
-    "app/": "src/",
     "jQuery": "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js",
     "_": "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js",
     "angular": "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js",
@@ -10,10 +9,8 @@ SystemJS.config({
     "ngAria": "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-aria.min.js",
     "ui.router": "https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js",
     "ui.bootstrap": "https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls.min.js",
-    "null": "",
-    "react": "https://cdnjs.cloudflare.com/ajax/libs/react/15.4.1/react.min.js",
-    "react-dom": "https://cdnjs.cloudflare.com/ajax/libs/react/15.4.1/react-dom.js",
-    "colored-border": 'http://localhost:9090/common/colored-border.js'
+    "colored-border": "http://localhost:9090/common/colored-border.js",
+    "app/": "src/"
   },
   browserConfig: {
     "baseURL": "/"
@@ -47,16 +44,23 @@ SystemJS.config({
     "child_process": "npm:jspm-nodelibs-child_process@0.2.0",
     "constants": "npm:jspm-nodelibs-constants@0.2.0",
     "crypto": "npm:jspm-nodelibs-crypto@0.2.0",
+    "domain": "npm:jspm-nodelibs-domain@0.2.0",
     "events": "npm:jspm-nodelibs-events@0.2.0",
     "fs": "npm:jspm-nodelibs-fs@0.2.0",
+    "http": "npm:jspm-nodelibs-http@0.2.0",
+    "https": "npm:jspm-nodelibs-https@0.2.1",
     "os": "npm:jspm-nodelibs-os@0.2.0",
     "path": "npm:jspm-nodelibs-path@0.2.1",
     "process": "npm:jspm-nodelibs-process@0.2.0",
+    "react": "npm:react@15.4.1",
+    "react-dom": "npm:react-dom@15.4.1",
     "single-spa": "npm:single-spa@3.2.5",
     "stream": "npm:jspm-nodelibs-stream@0.2.0",
     "string_decoder": "npm:jspm-nodelibs-string_decoder@0.2.0",
+    "url": "npm:jspm-nodelibs-url@0.2.0",
     "util": "npm:jspm-nodelibs-util@0.2.1",
-    "vm": "npm:jspm-nodelibs-vm@0.2.0"
+    "vm": "npm:jspm-nodelibs-vm@0.2.0",
+    "zlib": "npm:jspm-nodelibs-zlib@0.2.2"
   },
   packages: {
     "npm:jspm-nodelibs-buffer@0.2.1": {
@@ -257,6 +261,98 @@ SystemJS.config({
     "npm:hash.js@1.0.3": {
       "map": {
         "inherits": "npm:inherits@2.0.3"
+      }
+    },
+    "npm:jspm-nodelibs-http@0.2.0": {
+      "map": {
+        "http-browserify": "npm:stream-http@2.5.0"
+      }
+    },
+    "npm:jspm-nodelibs-url@0.2.0": {
+      "map": {
+        "url-browserify": "npm:url@0.11.0"
+      }
+    },
+    "npm:stream-http@2.5.0": {
+      "map": {
+        "inherits": "npm:inherits@2.0.3",
+        "readable-stream": "npm:readable-stream@2.2.2",
+        "xtend": "npm:xtend@4.0.1",
+        "builtin-status-codes": "npm:builtin-status-codes@2.0.0",
+        "to-arraybuffer": "npm:to-arraybuffer@1.0.1"
+      }
+    },
+    "npm:jspm-nodelibs-domain@0.2.0": {
+      "map": {
+        "domain-browserify": "npm:domain-browser@1.1.7"
+      }
+    },
+    "npm:jspm-nodelibs-zlib@0.2.2": {
+      "map": {
+        "browserify-zlib": "npm:browserify-zlib@0.1.4"
+      }
+    },
+    "npm:browserify-zlib@0.1.4": {
+      "map": {
+        "readable-stream": "npm:readable-stream@2.2.2",
+        "pako": "npm:pako@0.2.9"
+      }
+    },
+    "npm:url@0.11.0": {
+      "map": {
+        "punycode": "npm:punycode@1.3.2",
+        "querystring": "npm:querystring@0.2.0"
+      }
+    },
+    "npm:react-dom@15.4.1": {
+      "map": {
+        "fbjs": "npm:fbjs@0.8.6",
+        "loose-envify": "npm:loose-envify@1.3.0",
+        "object-assign": "npm:object-assign@4.1.0"
+      }
+    },
+    "npm:react@15.4.1": {
+      "map": {
+        "fbjs": "npm:fbjs@0.8.6",
+        "loose-envify": "npm:loose-envify@1.3.0",
+        "object-assign": "npm:object-assign@4.1.0"
+      }
+    },
+    "npm:fbjs@0.8.6": {
+      "map": {
+        "loose-envify": "npm:loose-envify@1.3.0",
+        "object-assign": "npm:object-assign@4.1.0",
+        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
+        "promise": "npm:promise@7.1.1",
+        "ua-parser-js": "npm:ua-parser-js@0.7.12",
+        "core-js": "npm:core-js@1.2.7"
+      }
+    },
+    "npm:loose-envify@1.3.0": {
+      "map": {
+        "js-tokens": "npm:js-tokens@2.0.0"
+      }
+    },
+    "npm:promise@7.1.1": {
+      "map": {
+        "asap": "npm:asap@2.0.5"
+      }
+    },
+    "npm:isomorphic-fetch@2.2.1": {
+      "map": {
+        "whatwg-fetch": "npm:whatwg-fetch@2.0.1",
+        "node-fetch": "npm:node-fetch@1.6.3"
+      }
+    },
+    "npm:node-fetch@1.6.3": {
+      "map": {
+        "is-stream": "npm:is-stream@1.1.0",
+        "encoding": "npm:encoding@0.1.12"
+      }
+    },
+    "npm:encoding@0.1.12": {
+      "map": {
+        "iconv-lite": "npm:iconv-lite@0.4.15"
       }
     }
   }
