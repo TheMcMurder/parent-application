@@ -3,7 +3,6 @@
     "name": "app",
     "main": "app.js",
     "dependencies": {
-      "react-dom": "npm:react-dom@^15.4.1",
       "single-spa": "npm:single-spa@^3.2.5"
     },
     "devDependencies": {
@@ -23,7 +22,6 @@
       "os": "npm:jspm-nodelibs-os@^0.2.0",
       "path": "npm:jspm-nodelibs-path@^0.2.0",
       "process": "npm:jspm-nodelibs-process@^0.2.0",
-      "react": "npm:react@^15.4.1",
       "stream": "npm:jspm-nodelibs-stream@^0.2.0",
       "string_decoder": "npm:jspm-nodelibs-string_decoder@^0.2.0",
       "url": "npm:jspm-nodelibs-url@^0.2.0",

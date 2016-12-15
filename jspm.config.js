@@ -10,6 +10,8 @@ SystemJS.config({
     "ui.router": "https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js",
     "ui.bootstrap": "https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls.min.js",
     "colored-border": "http://localhost:9090/common/colored-border.js",
+    "react": "https://cdnjs.cloudflare.com/ajax/libs/react/15.4.1/react.min.js",
+    "react-dom": "https://cdnjs.cloudflare.com/ajax/libs/react/15.4.1/react-dom.min.js",
     "app/": "src/"
   },
   browserConfig: {
@@ -52,8 +54,6 @@ SystemJS.config({
     "os": "npm:jspm-nodelibs-os@0.2.0",
     "path": "npm:jspm-nodelibs-path@0.2.1",
     "process": "npm:jspm-nodelibs-process@0.2.0",
-    "react": "npm:react@15.4.1",
-    "react-dom": "npm:react-dom@15.4.1",
     "single-spa": "npm:single-spa@3.2.5",
     "stream": "npm:jspm-nodelibs-stream@0.2.0",
     "string_decoder": "npm:jspm-nodelibs-string_decoder@0.2.0",
@@ -63,6 +63,13 @@ SystemJS.config({
     "zlib": "npm:jspm-nodelibs-zlib@0.2.2"
   },
   packages: {
+    "https://cdnjs.cloudflare.com/ajax/libs/react": {
+  	  "meta": {
+  		"*": {
+          "format": "global"
+  		}
+  	  }
+    },
     "npm:jspm-nodelibs-buffer@0.2.1": {
       "map": {
         "buffer": "npm:buffer@4.9.1"
@@ -302,57 +309,6 @@ SystemJS.config({
       "map": {
         "punycode": "npm:punycode@1.3.2",
         "querystring": "npm:querystring@0.2.0"
-      }
-    },
-    "npm:react-dom@15.4.1": {
-      "map": {
-        "fbjs": "npm:fbjs@0.8.6",
-        "loose-envify": "npm:loose-envify@1.3.0",
-        "object-assign": "npm:object-assign@4.1.0"
-      }
-    },
-    "npm:react@15.4.1": {
-      "map": {
-        "fbjs": "npm:fbjs@0.8.6",
-        "loose-envify": "npm:loose-envify@1.3.0",
-        "object-assign": "npm:object-assign@4.1.0"
-      }
-    },
-    "npm:fbjs@0.8.6": {
-      "map": {
-        "loose-envify": "npm:loose-envify@1.3.0",
-        "object-assign": "npm:object-assign@4.1.0",
-        "isomorphic-fetch": "npm:isomorphic-fetch@2.2.1",
-        "promise": "npm:promise@7.1.1",
-        "ua-parser-js": "npm:ua-parser-js@0.7.12",
-        "core-js": "npm:core-js@1.2.7"
-      }
-    },
-    "npm:loose-envify@1.3.0": {
-      "map": {
-        "js-tokens": "npm:js-tokens@2.0.0"
-      }
-    },
-    "npm:promise@7.1.1": {
-      "map": {
-        "asap": "npm:asap@2.0.5"
-      }
-    },
-    "npm:isomorphic-fetch@2.2.1": {
-      "map": {
-        "whatwg-fetch": "npm:whatwg-fetch@2.0.1",
-        "node-fetch": "npm:node-fetch@1.6.3"
-      }
-    },
-    "npm:node-fetch@1.6.3": {
-      "map": {
-        "is-stream": "npm:is-stream@1.1.0",
-        "encoding": "npm:encoding@0.1.12"
-      }
-    },
-    "npm:encoding@0.1.12": {
-      "map": {
-        "iconv-lite": "npm:iconv-lite@0.4.15"
       }
     }
   }
