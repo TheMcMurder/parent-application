@@ -8,8 +8,53 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <base href="/">
     <title></title>
+    <style>
+      [ng-cloak], .ng-cloak {
+        display: none
+      }
+
+      #app-loading-message {
+        display: -ms-flexbox;
+        display: flex;
+
+        -ms-flex-align: center;
+        align-items: center;
+
+        -ms-flex-direction: column;
+        flex-direction: column;
+
+        margin-top: 70px;
+      }
+      #app-loading-message .main,
+      #app-loading-message .sub {
+        font-size: 36px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 500;
+        line-height: 1.1;
+        color: #58595B;
+      }
+
+      #app-loading-message .main {
+        margin-bottom: 20px;
+      }
+      #app-loading-message .sub {
+        font-size: 30px;
+        color: #ACACAD;
+      }
+    </style>
+    <script>
+      window.loadStart = Date.now();
+    </script>
   </head>
-  <body>
+  <body id="csstyle">
+    <div id="app-loading-message">
+      <div class="main">Admin Portal</div>
+      <div class="sub">loading...</div>
+    </div>
+    <div class="ng-cloak">
+      <az-notifications></az-notifications>
+      <div ui-view class="page-container"></div>
+    </div>
     <script src="src/ssConfg.js"></script>
     <script src="jspm_packages/system.src.js"></script>
     <script>

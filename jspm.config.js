@@ -12,7 +12,9 @@ SystemJS.config({
     "colored-border": "http://localhost:9090/common/colored-border.js",
     "react": "https://cdnjs.cloudflare.com/ajax/libs/react/15.4.1/react.min.js",
     "react-dom": "https://cdnjs.cloudflare.com/ajax/libs/react/15.4.1/react-dom.min.js",
-    "app/": "src/"
+    "app/": "src/",
+    "null": "http://localhost:8888/server_config.js",
+    "font-awesome": "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css",
   },
   browserConfig: {
     "baseURL": "/"

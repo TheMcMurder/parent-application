@@ -1,8 +1,7 @@
 import * as singleSpa from 'single-spa'
-// const testAppUrl = window.ssConfig.testApp2 || 'oh noes'
+const testAppUrl = window.ssConfig.testApp2 || 'oh noes'
 
-// singleSpa.declareChildApplication('admin-portal', () => System.import(testAppUrl), () => true)
-
+singleSpa.declareChildApplication('admin-portal', () => System.import(testAppUrl), () => true)
 
 System.registerDynamic("primary-navbar!sofe", ['react'], true, function(require, exports, module) {
   var React = require('react');
@@ -20,5 +19,6 @@ document.body.appendChild(cpMainContent);
 window.loggedInUser ={effective_permissions: {}}
 window.tenant = {}
 
-singleSpa.declareChildApplication('canopy-urls', () => SystemJS.import('https://cdn.canopytax.com/sofe/canopy-urls/v5.3.2-24-g5a6d189/canopy-urls.js'), () => true);
+
+// singleSpa.declareChildApplication('canopy-urls', () => SystemJS.import('https://cdn.canopytax.com/sofe/canopy-urls/v5.3.2-24-g5a6d189/canopy-urls.js'), () => true);
 singleSpa.start();
