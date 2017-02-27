@@ -4,17 +4,13 @@ SystemJS.config({
     "jQuery": "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js",
     "_": "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js",
     "angular": "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js",
-    "ngAnimate": "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.min.js",
-    "ngSanitize": "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-sanitize.min.js",
-    "ngAria": "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-aria.min.js",
-    "ui.router": "https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js",
     "ui.bootstrap": "https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls.min.js",
     "colored-border": "http://localhost:9090/common/colored-border.js",
     "react": "https://cdnjs.cloudflare.com/ajax/libs/react/15.4.1/react.min.js",
     "react-dom": "https://cdnjs.cloudflare.com/ajax/libs/react/15.4.1/react-dom.min.js",
-    "app/": "src/",
-    "null": "http://localhost:8888/server_config.js",
-    "font-awesome": "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css",
+    "fontAwesome": "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css",
+    "github:": "jspm_packages/github/",
+    "app/": "src/"
   },
   browserConfig: {
     "baseURL": "/"
@@ -33,6 +29,18 @@ SystemJS.config({
           "loader": "plugin-babel"
         }
       }
+    },
+    "https://maxcdn.bootstrapcdn.com/font-awesome/": {
+      "meta": {
+        "*.css": {loader: 'css'}
+      }
+    },
+    "https://cdnjs.cloudflare.com/ajax/libs/react": {
+      "meta": {
+        "*": {
+          "format": "global"
+        }
+      }
     }
   }
 });
@@ -40,7 +48,8 @@ SystemJS.config({
 SystemJS.config({
   packageConfigPaths: [
     "npm:@*/*.json",
-    "npm:*.json"
+    "npm:*.json",
+    "github:*/*.json"
   ],
   map: {
     "assert": "npm:jspm-nodelibs-assert@0.2.0",
@@ -48,6 +57,7 @@ SystemJS.config({
     "child_process": "npm:jspm-nodelibs-child_process@0.2.0",
     "constants": "npm:jspm-nodelibs-constants@0.2.0",
     "crypto": "npm:jspm-nodelibs-crypto@0.2.0",
+    "css": "github:systemjs/plugin-css@0.1.32",
     "domain": "npm:jspm-nodelibs-domain@0.2.0",
     "events": "npm:jspm-nodelibs-events@0.2.0",
     "fs": "npm:jspm-nodelibs-fs@0.2.0",
@@ -65,13 +75,6 @@ SystemJS.config({
     "zlib": "npm:jspm-nodelibs-zlib@0.2.2"
   },
   packages: {
-    "https://cdnjs.cloudflare.com/ajax/libs/react": {
-  	  "meta": {
-  		"*": {
-          "format": "global"
-  		}
-  	  }
-    },
     "npm:jspm-nodelibs-buffer@0.2.1": {
       "map": {
         "buffer": "npm:buffer@4.9.1"

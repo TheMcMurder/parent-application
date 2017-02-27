@@ -5,7 +5,6 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <base href="/">
     <title></title>
     <style>
@@ -42,11 +41,17 @@
         color: #ACACAD;
       }
     </style>
+    <script src="jspm_packages/system.src.js"></script>
+    <script src="jspm.config.js"></script>
     <script>
+      window.serverConfig = {
+        singleSpa: true,
+      }
       window.loadStart = Date.now();
     </script>
   </head>
   <body id="csstyle">
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
     <div id="app-loading-message">
       <div class="main">Admin Portal</div>
       <div class="sub">loading...</div>
@@ -56,11 +61,8 @@
       <div ui-view class="page-container"></div>
     </div>
     <script src="src/ssConfg.js"></script>
-    <script src="jspm_packages/system.src.js"></script>
     <script>
       SystemJS.import('src/main.js');
     </script>
-    <!--<script src="jspm.broswer.js"></script>-->
-    <script src="jspm.config.js"></script>
   </body>
 </html>
