@@ -23,6 +23,14 @@ build:
         mkdir -p $WERCKER_OUTPUT_DIR/scripts/
         cp -r scripts/general/* $WERCKER_OUTPUT_DIR/scripts/
 
+    - script:
+      name: install deps
+      code: |
+        # Install JSPM
+        npm i jspm@0.17.0-beta.40 -g
+        # use jspm to install deps
+        jspm i
+
 #    - npm-install
 
 #    - script:
