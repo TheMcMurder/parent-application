@@ -39,3 +39,22 @@ build:
         cp -r dist $WERCKER_OUTPUT_DIR/
         # Add artifacts to report for manual download
         cp -r dist $WERCKER_REPORT_ARTIFACTS_DIR/
+
+deploy-d2:
+  box: themcmurder/ubuntu-python-pip
+  steps:
+    - pip-install:
+      requirements_file: ""
+      packages_list: "awscli"
+
+    - script:
+      name: Setting the Environment
+      code: |
+        export S3_ENV=d2
+        export CI_BUILD_NUMBER=$(cat build_number)
+        export CI_BUILD_COMMIT=$(cat build_commit)
+
+    - script:
+      name: Deploy to environment
+      code: |
+        ./scripts/deploy
