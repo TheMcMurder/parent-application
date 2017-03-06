@@ -2,18 +2,18 @@
 set -e
 
 if [ -z "$CI" ]; then
-  export AZ_VERSION='local'
+  export ss_version='local'
 else
-  export AZ_VERSION=${CI_BUILD_NUMBER}
+  export ss_version=${CI_BUILD_NUMBER}
 fi
 
 echo "################### Building parent-application ###################"
 time jspm bundle src/main.js dist/build.js
 echo "################### Parent Application built ###################"
 
-echo "################### printing version to dist/az-version.js ###################"
+echo "################### printing version to dist/ss-version.js ###################"
 # export AZ_BUILD_OBJECT=$(npm run -s getAzBuildObject)
-echo "Printing version: ${AZ_VERSION}"
-# echo "window.azBuild = $AZ_BUILD_OBJECT" > dist/alz-version.js
-echo "window.azBuild = $AZ_VERSION" > dist/alz-version.js
+echo "Printing version: ${ss_version}"
+# echo "window.azBuild = $AZ_BUILD_OBJECT" > dist/ss-version.js
+echo "window.azBuild = $ss_version" > dist/ss-version.js
 echo "################### Version Printed ###################"
