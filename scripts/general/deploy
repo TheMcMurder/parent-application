@@ -8,13 +8,13 @@ function set_s3_base_url() {
   echo "Setting S3 bucket url for \`$1\`"
   case "$1" in
     d2)
-      S3_URL=s3://admin-poc.d2.alianza.com
+      S3_URL=s3://admin-poc.alianza.com
       ;;
     q2)
-      S3_URL=s3://admin-poc.q2.alianza.com
+      S3_URL=s3://admin-poc.alianza.com
       ;;
     b2)
-      S3_URL=s3://admin-poc.b2.alianza.com
+      S3_URL=s3://admin-poc.alianza.com
       ;;
     p2)
       S3_URL=s3://admin-poc.alianza.com
