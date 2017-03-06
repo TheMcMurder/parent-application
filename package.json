@@ -7,7 +7,9 @@
       "single-spa": "npm:single-spa@^3.2.5"
     },
     "devDependencies": {
-      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.17"
+      "module": "npm:jspm-nodelibs-module@^0.2.0",
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.17",
+      "tty": "npm:jspm-nodelibs-tty@^0.2.0"
     },
     "peerDependencies": {
       "assert": "npm:jspm-nodelibs-assert@^0.2.0",

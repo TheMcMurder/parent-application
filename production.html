@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <base href="/">
+    <title></title>
+    <style>
+      [ng-cloak], .ng-cloak {
+        display: none
+      }
+
+      #app-loading-message {
+        display: -ms-flexbox;
+        display: flex;
+
+        -ms-flex-align: center;
+        align-items: center;
+
+        -ms-flex-direction: column;
+        flex-direction: column;
+
+        margin-top: 70px;
+      }
+      #app-loading-message .main,
+      #app-loading-message .sub {
+        font-size: 36px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 500;
+        line-height: 1.1;
+        color: #58595B;
+      }
+
+      #app-loading-message .main {
+        margin-bottom: 20px;
+      }
+      #app-loading-message .sub {
+        font-size: 30px;
+        color: #ACACAD;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.9/system.js"></script>
+    <script>
+      window.serverConfig = {
+        singleSpa: true,
+      }
+      window.loadStart = Date.now();
+    </script>
+  </head>
+  <body id="csstyle">
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <div id="app-loading-message">
+      <div class="main">Admin Portal</div>
+      <div class="sub">loading...</div>
+    </div>
+    <div class="ng-cloak">
+      <az-notifications></az-notifications>
+      <div ui-view class="page-container"></div>
+    </div>
+    <script src="FIND_REPLACE_BASE_PATH/ssConfg.js"></script>
+    <script src="FIND_REPLACE_BASE_PATH/build.js"></script>
+  </body>
+</html>

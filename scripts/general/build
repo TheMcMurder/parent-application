@@ -8,7 +8,8 @@ else
 fi
 
 echo "################### Building parent-application ###################"
-time jspm bundle src/main.js dist/build.js
+rm -rf dist/
+time jspm build jspm.config.js + src/main.js dist/build.js
 echo "################### Parent Application built ###################"
 
 echo "################### printing version to dist/ss-version.js ###################"

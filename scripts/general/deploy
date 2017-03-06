@@ -32,6 +32,26 @@ region = us-west-2
 EOF
 }
 
+function get_index_base() {
+  echo "creating base URL for \`$1\`"
+  case "$1" in
+    d2)
+      URL_BASE=https://admin.d2.alianza.com/build/${CI_BUILD_NUMBER}/
+      ;;
+    pr)
+      URL_BASE=https://admin.d2.alianza.com/pr/${CI_BUILD_NUMBER}/
+      ;;
+    q2)
+      URL_BASE=https://admin.q2.alianza.com/build/${CI_BUILD_NUMBER}/
+      ;;
+    b2)
+      URL_BASE=https://admin.b2.alianza.com/build/${CI_BUILD_NUMBER}/
+      ;;
+    p2)
+      URL_BASE=https://admin.alianza.com/build/${CI_BUILD_NUMBER}/
+      ;;
+  esac
+}
 
 function upload_to_s3() {
   local endpoint=$1
@@ -41,10 +61,23 @@ function upload_to_s3() {
 
   pushd dist
   $WORKING_DIR/setup_single_spa_config $S3_ENV
+  get_index_base $S3_ENV
 
   echo "uploading everything"
+  sed -i "s@FIND_REPLACE_BASE_PATH/@$URL_BASE@g" production.html
   aws --cli-connect-timeout 30 s3 sync . $endpoint --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
 
+  popd
+}
+
+function upload_root_index() {
+  echo "Deploying to: $1"
+  echo $URL_BASE
+
+  pushd dist
+
+  s3cmd sync . $1 --acl-public --cf-invalidate --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_ACCESS_KEY --exclude=* --include=index.html
+  sed -i "s@$URL_BASE@FIND_REPLACE_BASE_PATH/@g" index.html
   popd
 }
 
@@ -59,6 +92,7 @@ else
   set_s3_base_url $S3_ENV
   echo "This is a pull request on $SNAP_UPSTREAM_BRANCH. PR number $SNAP_PULL_REQUEST_NUMBER"
   upload_to_s3 "${S3_URL}/pr/${SNAP_PULL_REQUEST_NUMBER}/"
+  # upload_root_index $S3_URL
 fi
 
 echo "################### Done deploying ###################"
