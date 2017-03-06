@@ -1,0 +1,49 @@
+box:
+  id: $DOCKER_REPO/alz-node-dev
+  username: $CI_ARTIFACTORY_USER
+  password: $CI_ARTIFACTORY_PASSWORD
+  tag: latest
+  registry: $DOCKER_REGISTRY
+  no-response-timeout: 8
+
+build:
+  steps:
+
+    - script:
+      name: Setup Build Environment
+      code: |
+        # Setups the environment values to persist between pipelines
+        export CI_BUILD_NUMBER=$WERCKER_MAIN_PIPELINE_STARTED
+        echo -n "$CI_BUILD_NUMBER" > $WERCKER_OUTPUT_DIR/build_number
+        export CI_BUILD_COMMIT=$WERCKER_GIT_COMMIT
+        echo -n "$CI_BUILD_COMMIT" > $WERCKER_OUTPUT_DIR/build_commit
+        export AZ_VERSION="${WERCKER_GIT_BRANCH}.${CI_BUILD_NUMBER}.${CI_BUILD_COMMIT}"
+        echo -n "$AZ_VERSION" > $WERCKER_OUTPUT_DIR/az_version
+        # Copy the build scripts to be used in all pipelines
+        mkdir -p $WERCKER_OUTPUT_DIR/scripts/
+        cp -r scripts/general/* $WERCKER_OUTPUT_DIR/scripts/
+
+#    - npm-install
+
+#    - script:
+#      name: run tests
+#      code: |
+#        export CI=true
+#        npm run test:coverage
+
+#    - script:
+#      name: upload code coverage stats
+#      code: |
+#        # upload coverage stats
+#        echo -n "################### Reporting coverage ###################"
+#        codecov -t $CI_CODECOV_TOKEN
+#        echo -n "################### Coverage reported ###################"
+
+#    - script:
+#      name: build prod
+#      code: |
+#        ./scripts/general/build
+#        # Add production dist to other pipelines
+#        cp -r build $WERCKER_OUTPUT_DIR/
+#        # Add artifacts to report for manual download
+#        cp -r build $WERCKER_REPORT_ARTIFACTS_DIR/
