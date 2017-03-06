@@ -31,22 +31,6 @@ build:
         # use jspm to install deps
         jspm i
 
-#    - npm-install
-
-#    - script:
-#      name: run tests
-#      code: |
-#        export CI=true
-#        npm run test:coverage
-
-#    - script:
-#      name: upload code coverage stats
-#      code: |
-#        # upload coverage stats
-#        echo -n "################### Reporting coverage ###################"
-#        codecov -t $CI_CODECOV_TOKEN
-#        echo -n "################### Coverage reported ###################"
-
     - script:
       name: build prod
       code: |
