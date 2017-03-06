@@ -36,19 +36,19 @@ function get_index_base() {
   echo "creating base URL for \`$1\`"
   case "$1" in
     d2)
-      URL_BASE=https://admin.d2.alianza.com/build/${CI_BUILD_NUMBER}/
+      URL_BASE=https://admin-poc.alianza.com/build/${CI_BUILD_NUMBER}/
       ;;
     pr)
-      URL_BASE=https://admin.d2.alianza.com/pr/${CI_BUILD_NUMBER}/
+      URL_BASE=https://admin-poc.alianza.com/pr/${CI_BUILD_NUMBER}/
       ;;
     q2)
-      URL_BASE=https://admin.q2.alianza.com/build/${CI_BUILD_NUMBER}/
+      URL_BASE=https://admin-poc.alianza.com/build/${CI_BUILD_NUMBER}/
       ;;
     b2)
-      URL_BASE=https://admin.b2.alianza.com/build/${CI_BUILD_NUMBER}/
+      URL_BASE=https://admin-poc.alianza.com/build/${CI_BUILD_NUMBER}/
       ;;
     p2)
-      URL_BASE=https://admin.alianza.com/build/${CI_BUILD_NUMBER}/
+      URL_BASE=https://admin-poc.alianza.com/build/${CI_BUILD_NUMBER}/
       ;;
   esac
 }
