@@ -20,8 +20,8 @@ build:
         export AZ_VERSION="${WERCKER_GIT_BRANCH}.${CI_BUILD_NUMBER}.${CI_BUILD_COMMIT}"
         echo -n "$AZ_VERSION" > $WERCKER_OUTPUT_DIR/az_version
         # Copy the build scripts to be used in all pipelines
-        # mkdir -p $WERCKER_OUTPUT_DIR/scripts/
-        # cp -r scripts/general/* $WERCKER_OUTPUT_DIR/scripts/
+        mkdir -p $WERCKER_OUTPUT_DIR/scripts/
+        cp -r scripts/general/* $WERCKER_OUTPUT_DIR/scripts/
 
     - script:
       name: install deps
@@ -47,11 +47,11 @@ build:
 #        codecov -t $CI_CODECOV_TOKEN
 #        echo -n "################### Coverage reported ###################"
 
-#    - script:
-#      name: build prod
-#      code: |
-#        ./scripts/general/build
-#        # Add production dist to other pipelines
-#        cp -r build $WERCKER_OUTPUT_DIR/
-#        # Add artifacts to report for manual download
-#        cp -r build $WERCKER_REPORT_ARTIFACTS_DIR/
+    - script:
+      name: build prod
+      code: |
+        ./scripts/general/build
+        # Add production dist to other pipelines
+        cp -r dist $WERCKER_OUTPUT_DIR/
+        # Add artifacts to report for manual download
+        cp -r dist $WERCKER_REPORT_ARTIFACTS_DIR/
