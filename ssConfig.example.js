@@ -1,0 +1,3 @@
+window.ssConfig = {
+  adminPortal: 'adminPortalUrl',
+}

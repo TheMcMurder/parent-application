@@ -1,0 +1,64 @@
+#!/bin/bash
+WORKING_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+set -ex
+
+echo "################### Deploying ###################"
+
+function set_s3_base_url() {
+  echo "Setting S3 bucket url for \`$1\`"
+  case "$1" in
+    d2)
+      S3_URL=s3://singleSpa.d2.alianza.com
+      ;;
+    q2)
+      S3_URL=s3://singleSpa.q2.alianza.com
+      ;;
+    b2)
+      S3_URL=s3://singleSpa.b2.alianza.com
+      ;;
+    p2)
+      S3_URL=s3://singleSpa.alianza.com
+      ;;
+  esac
+  mkdir -p ~/.aws
+  cat > ~/.aws/credentials <<EOF
+[default]
+aws_access_key_id = $AWS_ACCESS_KEY_ID
+aws_secret_access_key = $AWS_SECRET_ACCESS_KEY
+EOF
+  cat > ~/.aws/config <<EOF
+[default]
+region = us-west-2
+EOF
+}
+
+
+function upload_to_s3() {
+  local endpoint=$1
+  local cfValidate=${2:-validate}
+
+  echo "Deploying to: $endpoint"
+
+  pushd dist
+  $WORKING_DIR/setup_single_spa_config $S3_ENV
+
+  echo "uploading everything"
+  aws --cli-connect-timeout 30 s3 sync . $endpoint --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+
+  popd
+}
+
+S3_ENV=${S3_ENV:=d2}
+
+if [ -z "$CI_PULL_REQUEST_NUMBER" ]
+then
+  set_s3_base_url $S3_ENV
+  upload_to_s3 "$S3_URL/"
+  upload_to_s3 "${S3_URL}/build/${CI_BUILD_NUMBER}/"
+else
+  set_s3_base_url $S3_ENV
+  echo "This is a pull request on $SNAP_UPSTREAM_BRANCH. PR number $SNAP_PULL_REQUEST_NUMBER"
+  upload_to_s3 "${S3_URL}/pr/${SNAP_PULL_REQUEST_NUMBER}/"
+fi
+
+echo "################### Done deploying ###################"

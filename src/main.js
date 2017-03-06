@@ -1,5 +1,5 @@
 import * as singleSpa from 'single-spa'
-const testAppUrl = window.ssConfig.pr || 'oh noes'
+const testAppUrl = window.ssConfig.adminPortal || 'oh noes'
 
 singleSpa.declareChildApplication('admin-portal', () => System.import(testAppUrl), () => true)
 

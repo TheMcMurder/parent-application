@@ -1,0 +1,27 @@
+#!/bin/bash
+WORKING_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+set -ex
+
+SINGLE_SPA_CONFIG=${SINGLE_SPA_CONFIG:=rest.d2.alianza.com}
+function set_ss_config_url() {
+  echo "Setting single spa config url for \`$1\`"
+  case "$1" in
+    d2)
+      adminPortalUrl=https://s3-us-west-2.amazonaws.com/admin.d2.alianza.com/latest/adminPortal/bundle.js
+      ;;
+    q2)
+      adminPortalUrl=https://s3-us-west-2.amazonaws.com/admin.q2.alianza.com/latest/adminPortal/bundle.js
+      ;;
+    b2)
+      adminPortalUrl=https://s3-us-west-2.amazonaws.com/admin.b2.alianza.com/latest/adminPortal/bundle.js
+      ;;
+    p2)
+      adminPortalUrl=https://s3-us-west-2.amazonaws.com/admin.alianza.com/latest/adminPortal/bundle.js
+      ;;
+  esac
+}
+if [[ $# -ne 0 ]] ; then
+  set_ss_config_url $1
+fi
+
+echo "window.ssConfig = {adminPortal: '$adminPortalUrl'}" > ssConfig.js
