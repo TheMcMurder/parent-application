@@ -64,7 +64,7 @@ function upload_to_s3() {
   get_index_base $S3_ENV
 
   echo "uploading everything"
-  sed -i "s@FIND_REPLACE_BASE_PATH/@$URL_BASE@g" production.html
+  sed -i "s@FIND_REPLACE_BASE_PATH/@$URL_BASE@g" index.html
   aws --cli-connect-timeout 30 s3 sync . $endpoint --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
 
   popd
