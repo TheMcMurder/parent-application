@@ -9,8 +9,7 @@ fi
 
 echo "################### Building parent-application ###################"
 rm -rf dist/
-time jspm build src/main.js dist/build.js \
-  --format umd
+time jspm bundle src/main.js dist/build.js --minify
 cp production.html dist/index.html
 echo "################### Parent Application built ###################"
 
