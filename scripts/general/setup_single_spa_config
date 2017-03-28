@@ -7,7 +7,7 @@ function set_ss_config_url() {
   echo "Setting single spa config url for \`$1\`"
   case "$1" in
     d2)
-      adminPortalUrl=https://s3-us-west-2.amazonaws.com/admin.d2.alianza.com/latest/adminPortal/bundle.js
+      adminPortalUrl=https://s3-us-west-2.amazonaws.com/admin.d2.alianza.com/pr/1488230061/pr_single-spa-4.1488230061.c7ddad89f4151bae244f0b61680b4e84f66f3d0d/bundle.js
       ;;
     q2)
       adminPortalUrl=https://s3-us-west-2.amazonaws.com/admin.q2.alianza.com/latest/adminPortal/bundle.js
