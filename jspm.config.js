@@ -14,6 +14,13 @@ SystemJS.config({
   },
   browserConfig: {
     "baseURL": "/",
+    "bundles": {
+      "build.js": [
+        "app/main.js",
+        "npm:single-spa@3.2.5/lib/single-spa.js",
+        "npm:single-spa@3.2.5.json"
+      ]
+    },
     "production": "false"
   },
   devConfig: {
