@@ -12,6 +12,7 @@ rm -rf dist/
 time jspm bundle src/main.js dist/build.js --minify
 cp production.html dist/index.html
 cp jspm.config.js dist/jspm.config.js
+sed -i "s@\"\production\": \"false\"@\"production\": \"true\"@g" dist/jspm.config.js
 echo "################### Parent Application built ###################"
 
 echo "################### printing version to dist/ss-version.js ###################"

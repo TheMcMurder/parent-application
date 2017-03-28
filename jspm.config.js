@@ -13,7 +13,8 @@ SystemJS.config({
     "app/": "src/"
   },
   browserConfig: {
-    "baseURL": "/"
+    "baseURL": "/",
+    "production": "false"
   },
   devConfig: {
     "map": {
