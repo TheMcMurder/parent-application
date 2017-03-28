@@ -48,6 +48,7 @@
       }
       window.loadStart = Date.now();
     </script>
+    <script src="jspm.config.js"></script>
   </head>
   <body id="csstyle">
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
@@ -61,5 +62,8 @@
     </div>
     <script src="FIND_REPLACE_BASE_PATH/ssConfig.js"></script>
     <script src="FIND_REPLACE_BASE_PATH/build.js"></script>
+    <script>
+      SystemJS.import('main.js')
+    </script>
   </body>
 </html>
