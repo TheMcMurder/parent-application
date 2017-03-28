@@ -9,7 +9,7 @@ fi
 
 echo "################### Building parent-application ###################"
 rm -rf dist/
-time jspm bundle src/main.js dist/build.js --minify
+time jspm bundle src/main.js dist/build.js
 cp production.html dist/index.html
 cp jspm.config.js dist/jspm.config.js
 sed -i "s@\"\production\": \"false\"@\"production\": \"true\"@g" dist/jspm.config.js
