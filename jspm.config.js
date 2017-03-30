@@ -18,8 +18,7 @@ SystemJS.config({
       "build.js": [
         "app/main.js",
         "npm:single-spa@3.2.5/lib/single-spa.js",
-        "npm:single-spa@3.2.5.json",
-        "github:systemjs/plugin-css@^0.1.32"
+        "npm:single-spa@3.2.5.json"
       ]
     },
     "production": "false"
