@@ -10,6 +10,7 @@ SystemJS.config({
     "react-dom": "https://cdnjs.cloudflare.com/ajax/libs/react/15.4.1/react-dom.min.js",
     "fontAwesome": "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css",
     "github:": "jspm_packages/github/",
+    "null": "@empty",
     "app/": "src/"
   },
   browserConfig: {
